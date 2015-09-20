@@ -1,0 +1,139 @@
+
+<?php
+session_start();
+include_once "library/inc.connection.php";
+include_once "library/inc.library.php";
+include_once "library/inc.tanggal.php";
+?>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pengolahan Data Nilai</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div id="wrapper">
+  <tr>
+    <td height="90" colspan="2"><a href="?open"><div id="header"> <img src="images/l.png"  border="0"> </div>
+    </a></td>
+  </tr>
+   <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+ 
+  <?php
+if(isset($_SESSION['SES_ADMIN'])){
+?>
+	<ul>
+	<li><a href='?open' title='Halaman Utama'>Home</a></li>
+	
+	<li><a href='?open=Pelajaran-Data' title='Pelajaran' target="_self"> Data Pelajaran</a></li>
+	<li><a href='?open=Guru-Data' title='Guru'> Data Guru</a></li>
+	<li><a href='?open=Siswa-Data' title='Siswa'> Data Siswa</a></li>
+	<li><a href='?open=Kelas-Data' title='Kelas'> Data Kelas</a></li>
+	<li><a href='?open=Nilai-Data' title='Nilai'> Nilai Kelas</a></li>
+	<li><a href='?open=Laporan' title='Laporan'> Laporan</a></li>
+	<li><a href='?open=Logout' title='Logout (Exit)'>Logout</a></li>
+	</ul>
+<?php
+}
+else { ?>
+	<ul>
+	<li><a href='?open=Log' title='Login System'>Login</a></li>	
+	</ul>
+<?php 
+}
+?>
+    <td width="50%" height="500"><div style="margin:3px; padding:3px;"><?php include "open_file.php";?></div></td>
+    
+  </tr>
+  
+</table>
+
+</div>
+
+        <!-- Sidebar -->
+       <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+			
+               <ul>
+	<li><a href='?open' title='Halaman Utama'>Home</a></li>
+	
+	<li><a href='?open=Pelajaran-Data' title='Pelajaran' target="_self"> Data Pelajaran</a></li>
+	<li><a href='guru_data.php?page=guru_data' title='Guru'> Data Guru</a></li>
+	<li><a href='?open=Siswa-Data' title='Siswa'> Data Siswa</a></li>
+	<li><a href='?open=Kelas-Data' title='Kelas'> Data Kelas</a></li>
+	<li><a href='?open=Nilai-Data' title='Nilai'> Nilai Kelas</a></li>
+	<li><a href='?open=Laporan' title='Laporan'> Laporan</a></li>
+	<li><a href='?open=Logout' title='Logout (Exit)'>Logout</a></li>
+	</ul>
+ <?php
+}
+else { ?>
+	<ul>
+	<li><a href='?open=Login' title='Login System'>Login</a></li>	
+	</ul>
+<?php 
+}
+?>
+            </ul>
+			
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+     <!--   <div id="page-content-wrapper">
+<?php
+		$page = (isset($_GET['page']))? $_GET['page'] : "main";
+switch ($page) {
+	case 'home': include "utama.php"; break;
+	case 'guru_data': include "guru_data.php"; break;
+	case 'universitas': include "universitas.php"; break;
+	
+	default : include 'in.html';		
+}		 ?>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                   </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
